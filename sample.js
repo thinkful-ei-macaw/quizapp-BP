@@ -3,7 +3,7 @@ const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      currentNumber: 1,
+      currentNumber: 1, //unecessary 
       questionHead: 'Question #1',
       question: 'Question One: Which mythological realm did the God Hades reign over?',
       picture: 'https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg',
@@ -89,7 +89,7 @@ function renderResults() {
 }
 
 function generateLanding() {
-    return `<header>
+  return `<header>
        <h1>Greek Mythology Quiz</h1>
        <h2>Set Sail Sailor!</h2>
     </header>
@@ -128,7 +128,7 @@ function generateQuestion() {
 }
 
 function generateResults() {
- /* if () {
+  /* if () {
     return `'<header>
   <h1>Correct!</h1>
   <h2>You're a genius!</h2>
@@ -198,10 +198,12 @@ function buttonSelect() {
   
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
   $('#getResult').submit(event => {
-    const questionVar = STORE.questions[STORE.questionNumber];
-    if ($('#getResult').val() === questionVar.correctAnswer) {
+    event.preventDefault();
+    // const questionVar = STORE.questions[STORE.questionNumber];
+    console.log($('input[type="radio"]:checked').val());
+    // if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       // generateCorrectPage()
-    }
+    // }
   }
   )
 }
@@ -217,6 +219,7 @@ function handleQuiz() {
   renderLanding();
   startQuiz();
   generateQuestion();
+  buttonSelect();
   
 }
 
