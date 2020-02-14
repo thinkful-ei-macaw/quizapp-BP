@@ -6,30 +6,76 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      questionhead: 'Question #1'
+      questionHead: 'Question #1',
       question: 'Question One: Which mythological realm did the God Hades reign over?',
+      picture: 'Pic',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'The skies',
+        'The seas',
+        'The underworld',
+        'The wilderness'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'The underworld'
     },
     {
-      question: 'What is the current year?',
+      questionHead: 'Question #2',
+      question: 'Which goddess was the goddess of love in Greek mythology?',
+      picture: 'pic',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'Aphrodite',
+        'Freja',
+        'Hathor',
+        'Wendigo'
       ],
-      correctAnswer: '2019'
+      correctAnswer: 'Aphrodite'
+    },
+    {
+      questionHead: 'Question #3',
+      question: 'Which greek wrote the classic epic, The Illiad?',
+      picture: 'pic',
+      answers: [
+        'Plato',
+        'Stephen King',
+        'Socrates',
+        'Homer'
+      ],
+      correctAnswer: 'Homer'
+    },
+    {
+      questionHead: 'Question #4',
+      question: 'Which mythological hero put Cereberus to sleep?',
+      picture: 'pic',
+      answers: [
+        'Hercules',
+        'Orpheus',
+        'Jason',
+        'Oedipus'
+      ],
+      correctAnswer: 'Orpheus'
+    },
+    {
+      questionHead: 'Question #5',
+      question: 'What is known as the "Nectar of the Gods?',
+      picture: 'pic',
+      answers: [
+        'Ichor',
+        'Wine',
+        'Ambrosia',
+        'Olive oil'
+      ],
+      correctAnswer: 'Ambrosia'
     }
   ],
+  quizStarted: false,
   questionNumber: 0,
   score: 0
 };
+
+function render() {
+  if (store.quizStarted === false) {
+    $(renderLanding);
+  }
+}
 
 function renderLanding() {
   $('.ship').html(
