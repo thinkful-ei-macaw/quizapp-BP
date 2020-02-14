@@ -81,6 +81,11 @@ function renderLanding() {
 
 function renderQuestion() {
   $('.ship').html(generateQuestion());
+  
+}
+
+function renderResults() {
+  $('.ship').html(generateResults());
 }
 
 function generateLanding() {
@@ -116,8 +121,8 @@ function generateQuestion() {
 <input type="radio" name="answer" value="2" /> ${questionVar.answers[1]}
 <input type="radio" name="answer" value="3" /> ${questionVar.answers[2]}
 <input type="radio" name="answer" value="4" /> ${questionVar.answers[3]}
-<label for="start">Check your Adventure!</label>
-<input type="submit" id="start" value="Check!"></input>
+<label for="gettingResult">Check your Adventure!</label>
+<input type="submit" id="resultChecker" value="Check!"></input>
 </form>
 </div>`;
 }
@@ -202,6 +207,7 @@ function handleQuiz() {
   renderLanding();
   startQuiz();
   generateQuestion();
+  
 }
 
 $(handleQuiz);
