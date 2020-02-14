@@ -81,7 +81,6 @@ function renderLanding() {
 
 function renderQuestion() {
   $('.ship').html(generateQuestion());
-  
 }
 
 function renderResults() {
