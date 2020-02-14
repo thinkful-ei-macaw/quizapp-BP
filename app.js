@@ -2,7 +2,7 @@
  * Example store structure
  */
 'use strict';
-const store = {
+const STORE = {
   // 5 or more questions are required
   questions: [
     {
@@ -91,32 +91,35 @@ function renderLanding() {
      <input type="submit" id="start" value="Embark!"></input>
     </form>
     </div>`);
-  renderQuestionOnClick(item);
+  renderQuestionOnClick();
   
   console.log('landed');
 }
 $(renderLanding);
-const item = store[Object.keys(store)[0]][0];
 
-function renderQuestionOnClick(array) {
+function generateQuestionHTML(){
+  $('.ship').html(
+    `<header>
+       <h1>${Object.map(STORE).(STORE[questionNumber]}</h1>
+       <h2>${array['question 1']}</h2>
+    </header>
+    <div><img src="https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
+    <p></p>
+    <form id="submitpage">
+     <h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
+     <label for="start">Begin your Adventure!</label>
+     <input type="submit" id="start" value="Embark!"></input>
+    </form>
+    </div>`);
+
+}
+function renderQuestionOnClick() {
   $('#submitpage').submit( event => {
     event.preventDefault();
     console.log('wow you guys made it this far');
     
-    console.log(item);
-    $('.ship').html(
-      `<header>
-         <h1>${Object.keys(array)[0]}</h1>
-         <h2>${array['question 1']}</h2>
-      </header>
-      <div><img src="https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
-      <p></p>
-      <form id="submitpage">
-       <h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
-       <label for="start">Begin your Adventure!</label>
-       <input type="submit" id="start" value="Embark!"></input>
-      </form>
-      </div>`);
+    console.log();
+    generateQuestion;
 
   }
   );
