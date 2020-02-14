@@ -72,7 +72,7 @@ const STORE = {
 };
 
 function render() {
-  if (store.quizStarted === false) {
+  if (STORE.quizStarted === false) {
     $(renderLanding);
   }
 }
@@ -100,8 +100,8 @@ $(renderLanding);
 function generateQuestionHTML(){
   $('.ship').html(
     `<header>
-       <h1>${Object.map(STORE).(STORE[questionNumber]}</h1>
-       <h2>${array['question 1']}</h2>
+       <h1>${STORE[STORE.questionNumber]}</h1>
+       <h2>${STORE['question 1']}</h2>
     </header>
     <div><img src="https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
     <p></p>
@@ -117,10 +117,11 @@ function renderQuestionOnClick() {
   $('#submitpage').submit( event => {
     event.preventDefault();
     console.log('wow you guys made it this far');
+    STORE.questionNumber++;
     
     console.log();
-    generateQuestion;
-
+    $(generateQuestionHTML);
+  
   }
   );
 }
