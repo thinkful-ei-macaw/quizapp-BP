@@ -6,7 +6,7 @@ const STORE = {
       currentNumber: 1,
       questionHead: 'Question #1',
       question: 'Question One: Which mythological realm did the God Hades reign over?',
-      picture: 'Pic',
+      picture: 'https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg',
       answers: [
         'The skies',
         'The seas',
@@ -42,7 +42,7 @@ const STORE = {
       correctAnswer: 'Homer'
     },
     {
-      currentNumber: 4
+      currentNumber: 4,
       questionHead: 'Question #4',
       question: 'Which mythological hero put Cereberus to sleep?',
       picture: 'pic',
@@ -79,6 +79,10 @@ function renderLanding() {
   $('.ship').html(generateLanding());
 }
 
+function renderQuestion() {
+  $('.ship').html(generateQuestion());
+}
+
 function generateLanding() {
     return `<header>
        <h1>Greek Mythology Quiz</h1>
@@ -92,27 +96,35 @@ function generateLanding() {
      <input type="submit" id="start" value="Embark!"></input>
     </form>
     </div>`;
+
+    
   
 }
 
 function generateQuestion() {
   //This will hold HTML for the questions.
+  const questionVar = STORE.questions[STORE.questionNumber];
   return `<header>
-  <h1>${STORE[STORE.questionNumber]}</h1>
-  <h2></h2>
+  <h1>${questionVar.questionHead}</h1>
+  <h2>${questionVar.question}</h2>
 </header>
-<div><img src="https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
-<p></p>
-<form id="submitpage">
-<h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
-<label for="start">Begin your Adventure!</label>
-<input type="submit" id="start" value="Embark!"></input>
+<div><img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
+<form id="getResult">
+<h2>Choose your answer below.</h2>
+<label for="start"></label>
+<input type="radio" name="answer" value="1" /> ${questionVar.answers[0]}
+<input type="radio" name="answer" value="2" /> ${questionVar.answers[1]}
+<input type="radio" name="answer" value="3" /> ${questionVar.answers[2]}
+<input type="radio" name="answer" value="4" /> ${questionVar.answers[3]}
+<label for="start">Check your Adventure!</label>
+<input type="submit" id="start" value="Check!"></input>
 </form>
-</div>`
+</div>`;
 }
 
 function generateResults() {
-  if return `'<header>
+ /* if () {
+    return `'<header>
   <h1>Correct!</h1>
   <h2>You're a genius!</h2>
 </header>
@@ -124,7 +136,7 @@ function generateResults() {
   <input type="submit" id="start" value="Next Question">
 </form> 
 </main>'`
-else{  
+/*else{  
 return `<header> <h1>Incorrect...</h1>
 <h2>Oops! The right answer was _______</h2>
 </header>
@@ -135,7 +147,7 @@ return `<header> <h1>Incorrect...</h1>
 <label for="start">Keep going!</label>
 <input type="submit" id="start" value="Next Question">
 </form> 
-</main>'`};
+</main>'`}; */
 }
 
 function generateFinal() {
@@ -154,10 +166,15 @@ function generateFinal() {
 </main>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
 <script src="app.js"></script>'`
-};
+}
 
 function startQuiz() {
   //This will be the button press on the renderLanding that will bring you to the first question
+  $('#submitpage').submit( event => {
+    event.preventDefault();
+    console.log('wow you guys made it this far');
+    renderQuestion();
+  });
 }
 
 function nextQuestion() {
@@ -183,5 +200,8 @@ function resetButton() {
 function handleQuiz() {
   //This function calls all functions in order to run the entire quiz
   renderLanding();
+  startQuiz();
+  generateQuestion();
 }
+
 $(handleQuiz);
