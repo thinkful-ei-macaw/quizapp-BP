@@ -6,7 +6,7 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      'question 1': 'Question One: Which mythological realm did the God Hades reign over?',
+      'Question #1': 'Question One: Which mythological realm did the God Hades reign over?',
       answers: [
         'red',
         'orange',
