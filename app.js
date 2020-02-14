@@ -72,7 +72,7 @@ const STORE = {
 };
 
 function render() {
-  if (store.quizStarted === false) {
+  if (STORE.quizStarted === false) {
     $(renderLanding);
   }
 }
@@ -115,10 +115,13 @@ function generateQuestionHTML(){
 }
 function renderQuestionOnClick() {
   $('#submitpage').submit( event => {
-    generateQuestionHTML();
+    event.preventDefault();
+    console.log('wow you guys made it this far');
+    STORE.questionNumber++;
     
     console.log();
-    
+    $(generateQuestionHTML);
+  
   }
   );
 }
