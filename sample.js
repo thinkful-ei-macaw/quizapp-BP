@@ -81,6 +81,7 @@ function renderLanding() {
 
 function renderQuestion() {
   $('.ship').html(generateQuestion());
+  buttonSelect();
 }
 
 function renderResults() {
@@ -194,8 +195,18 @@ function updatePage() {
 }
 
 function buttonSelect() {
+  
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
+  $('#getResult').submit(event => {
+    const questionVar = STORE.questions[STORE.questionNumber];
+    if ($('#getResult').val() === questionVar.correctAnswer) {
+      // generateCorrectPage()
+    }
+  }
+  )
 }
+
+
 
 function resetButton() {
   //This puts all store values back to 0
