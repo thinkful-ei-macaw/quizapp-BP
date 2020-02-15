@@ -29,7 +29,7 @@ const STORE = {
     {
       questionHead: 'Question 3/5',
       question: 'Which greek wrote the classic epic, The Illiad?',
-      picture: 'pic',
+      picture: 'https://cdn.britannica.com/72/133972-050-9F4E1129/Procession-of-the-Trojan-Horse-canvas-Troy-1760.jpg',
       answers: [
         'Plato',
         'Stephen King',
@@ -41,19 +41,19 @@ const STORE = {
     {
       questionHead: 'Question 4/5',
       question: 'Which mythological hero put Cereberus to sleep?',
-      picture: 'pic',
+      picture: 'https://i.pinimg.com/originals/68/09/37/680937588ddb4b82f854074c59fc08f3.png',
       answers: [
         'Hercules',
         'Orpheus',
         'Jason',
         'Oedipus'
       ],
-      correctAnswer: '"Orpheus"'
+      correctAnswer: 'Orpheus'
     },
     {
       questionHead: 'Question 5/5',
       question: 'What is known as the "Nectar of the Gods?',
-      picture: 'pic',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Peter_Paul_Rubens_-_The_Fall_of_Phaeton_%28National_Gallery_of_Art%29.jpg/1200px-Peter_Paul_Rubens_-_The_Fall_of_Phaeton_%28National_Gallery_of_Art%29.jpg',
       answers: [
         'Ichor',
         'Wine',
@@ -143,7 +143,6 @@ function generateCorrectResults() {
 <main><img src="https://i.pinimg.com/originals/43/2d/97/432d97353a5f6e129c7a4440f47597c0.jpg" alt="Greek comedy mask is happy for you!">
 <p></p>
 <form id="get-results">
-  <h2>You got 1/6 questions correct</h2>
   <label for="start">Keep going!</label>
   <input type="submit" id="start" value="Next Question">
 </form> 
@@ -160,7 +159,6 @@ function generateIncorrectResults() {
 <main><img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek tradgedy set is not happy with you...">
 <p></p>
 <form id="get-results">
-<h2>You have 0/6 questions correct</h2>
 <label for="start">Keep going!</label>
 <input type="submit" id="start" value="Next Question">
 </form> 
@@ -234,15 +232,17 @@ function buttonSelect() {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
     console.log($('input[type="radio"]:checked').val());
-    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
+    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer && $('input:radio', this).is(':checked')) {
       STORE.score++;
       renderCorrectResults();
       nextQuestionButton();
     }
-    else { 
+    else if ($('input:radio', this).is(':checked')) { 
       renderIncorrectResults();
       nextQuestionButton();
-    } 
+    } else {
+      alert('Please make a selection!')
+    }
   });
 }
 
