@@ -202,6 +202,12 @@ function nextQuestionButton() {
   // on click we will renderQuestion
 }
 
+function endQuiz() {
+  //This function will render the results of the quiz.
+  
+}
+
+
 function updateScore() {
   //This function will increment the STORE for correct answers by 1 if the answer chosen is correct, and if not it will not increment. If / else
 }
@@ -216,12 +222,10 @@ function submitPage(){
 }
 
 function buttonSelect() {
-  
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
-    // const questionVar = STORE.questions[STORE.questionNumber];
     console.log($('input[type="radio"]:checked').val());
     if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       renderCorrectResults();
@@ -232,8 +236,6 @@ function buttonSelect() {
       nextQuestionButton();
     } 
   });
-  
-  
 }
 
 
