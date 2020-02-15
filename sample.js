@@ -24,7 +24,7 @@ const STORE = {
         'Hathor',
         'Wendigo'
       ],
-      correctAnswer: 'Aphrodite'
+      correctAnswer: '1'
     },
     {
       questionHead: 'Question #3',
@@ -36,7 +36,7 @@ const STORE = {
         'Socrates',
         'Homer'
       ],
-      correctAnswer: 'Homer'
+      correctAnswer: '4'
     },
     {
       questionHead: 'Question #4',
@@ -48,7 +48,7 @@ const STORE = {
         'Jason',
         'Oedipus'
       ],
-      correctAnswer: 'Orpheus'
+      correctAnswer: '2'
     },
     {
       questionHead: 'Question #5',
@@ -60,7 +60,7 @@ const STORE = {
         'Ambrosia',
         'Olive oil'
       ],
-      correctAnswer: 'Ambrosia'
+      correctAnswer: '3'
     }
   ],
   quizStarted: false,
@@ -87,6 +87,9 @@ function renderIncorrectResults() {
   $('.ship').html(generateIncorrectResults());
 }
 
+function renderFinal() {
+  $('.ship').html(generateFinal());
+}
 function generateLanding() {
   return `<header>
        <h1>Greek Mythology Quiz</h1>
@@ -180,7 +183,7 @@ function startQuiz() {
     event.preventDefault();
     console.log('wow you guys made it this far');
     renderQuestion();
-    generateQuestion();
+    
     
   });
 }
@@ -223,12 +226,17 @@ function buttonSelect() {
     if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       renderCorrectResults();
       nextQuestionButton();
-    } else {
+    }
+    else if (STORE.questionNumber < 5) { 
       renderIncorrectResults();
       nextQuestionButton();
+    } else if (STORE.questionNumber === 4) {
+      renderFinal();
+      
     }
-  }
-  )
+  });
+  
+  
 }
 
 
@@ -242,8 +250,8 @@ function handleQuiz() {
   renderLanding();
   startQuiz();
   buttonSelect();
-  generateQuestion();
-  
 }
+  
+
 
 $(handleQuiz);
