@@ -75,8 +75,12 @@ function renderLanding() {
 }
 
 function renderQuestion() {
-  $('.ship').html(generateQuestion());
-  buttonSelect();
+  if (STORE.questionNumber < 5){
+    $('.ship').html(generateQuestion());
+    buttonSelect();
+  } else {
+    renderFinal();
+  }
 }
 
 function renderCorrectResults() {
@@ -195,7 +199,6 @@ function nextQuestionButton() {
     console.log('Jesus this is hard');
     STORE.questionNumber = STORE.questionNumber + 1;
     renderQuestion();
-    generateQuestion();
 
   });
   // this function will also incriment quesitonNumber by 1
