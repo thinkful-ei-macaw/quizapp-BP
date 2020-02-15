@@ -3,7 +3,7 @@ const STORE = {
   // 5 or more questions are required
   questions: [
     {
-      questionHead: 'Question #1',
+      questionHead: 'Question 1/5',
       question: 'Question One: Which mythological realm did the God Hades reign over?',
       picture: 'https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg',
       answers: [
@@ -12,10 +12,10 @@ const STORE = {
         'The underworld',
         'The wilderness'
       ],
-      correctAnswer: '3'
+      correctAnswer: 'The underworld'
     },
     {
-      questionHead: 'Question #2',
+      questionHead: 'Question 2/5',
       question: 'Which goddess was the goddess of love in Greek mythology?',
       picture: 'https://i0.wp.com/strangeago.com/wp-content/uploads/2018/09/Venus01.jpg?resize=680%2C385&ssl=1" alt="Goddess Aphrodite being admired by her winged baby angels',
       answers: [
@@ -24,10 +24,10 @@ const STORE = {
         'Hathor',
         'Wendigo'
       ],
-      correctAnswer: '1'
+      correctAnswer: 'Aphrodite'
     },
     {
-      questionHead: 'Question #3',
+      questionHead: 'Question 3/5',
       question: 'Which greek wrote the classic epic, The Illiad?',
       picture: 'pic',
       answers: [
@@ -36,10 +36,10 @@ const STORE = {
         'Socrates',
         'Homer'
       ],
-      correctAnswer: '4'
+      correctAnswer: 'Homer'
     },
     {
-      questionHead: 'Question #4',
+      questionHead: 'Question 4/5',
       question: 'Which mythological hero put Cereberus to sleep?',
       picture: 'pic',
       answers: [
@@ -48,10 +48,10 @@ const STORE = {
         'Jason',
         'Oedipus'
       ],
-      correctAnswer: '2'
+      correctAnswer: '"Orpheus"'
     },
     {
-      questionHead: 'Question #5',
+      questionHead: 'Question 5/5',
       question: 'What is known as the "Nectar of the Gods?',
       picture: 'pic',
       answers: [
@@ -60,7 +60,7 @@ const STORE = {
         'Ambrosia',
         'Olive oil'
       ],
-      correctAnswer: '3'
+      correctAnswer: 'Ambrosia'
     }
   ],
   quizStarted: false,
@@ -118,15 +118,16 @@ function generateQuestion() {
   return `<header>
   <h1>${questionVar.questionHead}</h1>
   <h2>${questionVar.question}</h2>
+  <h3>Your current score is ${STORE.score} out of 5.</h3>
 </header>
 <div><img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
 <form id="getResult">
 <h2>Choose your answer below.</h2>
 <label for="start"></label>
-<input type="radio" name="answer" value="1" /> ${questionVar.answers[0]}
-<input type="radio" name="answer" value="2" /> ${questionVar.answers[1]}
-<input type="radio" name="answer" value="3" /> ${questionVar.answers[2]}
-<input type="radio" name="answer" value="4" /> ${questionVar.answers[3]}
+<input type="radio" name="answer" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}
+<input type="radio" name="answer" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}
+<input type="radio" name="answer" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}
+<input type="radio" name="answer" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}
 <label for="gettingResult">Check your Adventure!</label>
 <input type="submit" id="resultChecker" value="Check!"></input>
 </form>
@@ -137,6 +138,7 @@ function generateCorrectResults() {
   return `'<header>
   <h1>Correct!</h1>
   <h2>You're a genius!</h2>
+  <h3>Your current score is ${STORE.score} out of 5.</h3>
 </header>
 <main><img src="https://i.pinimg.com/originals/43/2d/97/432d97353a5f6e129c7a4440f47597c0.jpg" alt="Greek comedy mask is happy for you!">
 <p></p>
@@ -150,8 +152,10 @@ function generateCorrectResults() {
 }
 
 function generateIncorrectResults() { 
+  const questionVar = STORE.questions[STORE.questionNumber];
   return `<header> <h1>Incorrect...</h1>
-<h2>Oops! The right answer was _______</h2>
+<h2>Oops! The right answer was ${questionVar.correctAnswer}</h2>
+<h3>Your current score is ${STORE.score} out of 5.</h3>
 </header>
 <main><img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek tradgedy set is not happy with you...">
 <p></p>
@@ -168,17 +172,17 @@ function generateFinal() {
   return `'<header>
   <h1>You have completed your Journey</h1>
   <h2>We hope you are satisfied with yourself</h2>
+  <h3>You got ${STORE.score} out of 5 correct.</h3>
 </header>
 <main><img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters">
 <p></p>
 <form>
-  <h2>You got 4/6 correct...</h2>
   <label for="start">Restart Your Adventure!</label>
   <input type="submit" id="start" value="Embark!">
 </form> 
 </main>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
-<script src="app.js"></script>'`
+<script src="app.js"></script>'`;
 }
 
 function startQuiz() {
@@ -231,6 +235,7 @@ function buttonSelect() {
     const questionVar = STORE.questions[STORE.questionNumber];
     console.log($('input[type="radio"]:checked').val());
     if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
+      STORE.score++;
       renderCorrectResults();
       nextQuestionButton();
     }
@@ -240,8 +245,6 @@ function buttonSelect() {
     } 
   });
 }
-
-
 
 function resetButton() {
   //This puts all store values back to 0
