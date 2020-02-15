@@ -227,13 +227,10 @@ function buttonSelect() {
       renderCorrectResults();
       nextQuestionButton();
     }
-    else if (STORE.questionNumber < 5) { 
+    else { 
       renderIncorrectResults();
       nextQuestionButton();
-    } else if (STORE.questionNumber === 4) {
-      renderFinal();
-      
-    }
+    } 
   });
   
   
