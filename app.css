@@ -34,6 +34,18 @@ img {
   max-height: 275px;
 }
 
+form {
+  font-size: 25px;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+}
+
+input {
+  background-color: olive;
+  border: 1px solid black ;
+  font-weight: bold;
+}
+
 @media (min-width: 720px) {
   img {
     max-width: 500px;

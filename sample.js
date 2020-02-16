@@ -117,8 +117,8 @@ function generateQuestion() {
    <h2>Your current score is ${STORE.score} out of 5.</h2>
   </header>
    <img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
+   <h3>${questionVar.question}</h3>
    <form id="getResult">
-     <h3>${questionVar.question}</h3>
      <label for="start"></label>
      <input type="radio" class="radio" aria-label="${questionVar.answers[0]}" name="radio1" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
      <input type="radio" class="radio" aria-label="${questionVar.answers[1]}" name="radio1" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
