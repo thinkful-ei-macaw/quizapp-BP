@@ -99,7 +99,7 @@ function generateLanding() {
     <div><img src="https://www.scalehobbyist.com/images/products/ZVE/ZVE00008514/ZVE00008514_0_l.jpg" alt="Greek triremes setting sail on ocean waters"></img>
     <h2 aria-label="Do you accept this challenge?">Do you dare challenge your intelligence on Ancient Greece?</h2>
     <form id="submitpage">
-     <label for="start">Begin your Adventure!</label><br>
+     <label for="start">Begin your Adventure!</label><br><br>
      <input type="submit" id="start" value="Embark!"></input>
     </form>
     </div>`;
@@ -114,18 +114,17 @@ function generateQuestion() {
   return `
   <header>
    <h1>${questionVar.questionHead}</h1>
-   <h2>${questionVar.question}</h2>
-   <h3>Your current score is ${STORE.score} out of 5.</h3>
+   <h2>Your current score is ${STORE.score} out of 5.</h2>
   </header>
    <img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
    <form id="getResult">
-     <h2>Choose your answer below.</h2>
+     <h3>${questionVar.question}</h3>
      <label for="start"></label>
      <input type="radio" class="radio" aria-label="${questionVar.answers[0]}" name="radio1" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
      <input type="radio" class="radio" aria-label="${questionVar.answers[1]}" name="radio1" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
      <input type="radio" class="radio" aria-label="${questionVar.answers[2]}" name="radio1" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
      <input type="radio" class="radio" aria-label="${questionVar.answers[3]}" name="radio1" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
-     <label for="gettingResult">Check your Adventure!</label><br>
+     <label for="gettingResult">Check your Adventure!</label><br><br>
      <input type="submit" id="resultChecker" value="Check!"></input>
    </form>`;
 }
@@ -139,7 +138,7 @@ function generateCorrectResults() {
     </header>
     <img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek comedy mask is happy for you!">
     <form id="get-results">
-      <label for="start">Keep going!</label><br>
+      <label for="start">Keep going!</label><br><br>
       <input type="submit" id="start" value="Continue!">
     </form> `;
 
@@ -155,7 +154,7 @@ function generateIncorrectResults() {
   </header>
   <img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek tradgedy set is not happy with you...">
   <form id="get-results">
-    <label for="start">Keep going!</label><br>
+    <label for="start">Keep going!</label><br><br>
     <input type="submit" id="start" value="Continue!">
   </form>`;
 }
@@ -170,7 +169,7 @@ function generateFinal() {
    </header>
    <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters">
    <form>
-     <label for="restart">Restart Your Adventure!</label><br>
+     <label for="restart">Restart Your Adventure!</label><br><br>
      <input type="submit" id="restart" value="Rembark!">
    </form>`;
 }
