@@ -75,12 +75,8 @@ function renderLanding() {
 }
 
 function renderQuestion() {
-  if (STORE.questionNumber < 5){
-    $('.ship').html(generateQuestion());
-    buttonSelect();
-  } else {
-    renderFinal();
-  }
+  $('.ship').html(generateQuestion());
+  radioSelect();
 }
 
 function renderCorrectResults() {
@@ -125,10 +121,10 @@ function generateQuestion() {
    <form id="getResult">
      <h2>Choose your answer below.</h2>
      <label for="start"></label>
-     <input type="radio" name="${questionVar.answers[0]}" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
-     <input type="radio" name="${questionVar.answers[1]}" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
-     <input type="radio" name="${questionVar.answers[2]}" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
-     <input type="radio" name="${questionVar.answers[3]}" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
+     <input type="radio" class="radio" name="${questionVar.answers[0]}"  value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
+     <input type="radio" class="radio" name="${questionVar.answers[1]}" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
+     <input type="radio" class="radio" name="${questionVar.answers[2]}"  value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
+     <input type="radio" class="radio" name="${questionVar.answers[3]}"  value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
      <label for="gettingResult">Check your Adventure!</label>
      <input type="submit" id="resultChecker" value="Check!"></input>
    </form>`;
@@ -193,18 +189,26 @@ function nextQuestionButton() {
   $('#get-results').submit(event => {
     event.preventDefault();
     STORE.questionNumber++;
-    renderQuestion();
+    if (STORE.questionNumber < 5) {
+      renderQuestion(); 
+    } else {
+      renderFinal();
+    }
   });
   // this function will also incriment quesitonNumber by 1
   // on click we will renderQuestion
 }
 
-function buttonSelect() {
+function radioSelect() {
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
+  allowDeselect();
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
-    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
+    if ($('input:radio').siblings(':checked').length > 1) {
+      alert('Please make only one selection!');
+    }
+    else if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       STORE.score++;
       renderCorrectResults();
       nextQuestionButton();
@@ -212,8 +216,14 @@ function buttonSelect() {
     else if ($('input:radio', this).is(':checked')) { 
       renderIncorrectResults();
       nextQuestionButton();
-    } else {
-      alert('Please make one selection!')
+    } 
+  });
+}
+
+function allowDeselect() {
+  $('input').on('click', function(e) {
+    if (e.ctrlKey) {
+      $(this).prop('checked', false);
     }
   });
 }
@@ -227,7 +237,7 @@ function handleQuiz() {
   //This function calls all functions in order to run the entire quiz
   renderLanding();
   startQuiz();
-  buttonSelect();
+  radioSelect();
 }
   
 $(handleQuiz);
