@@ -6,6 +6,27 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+* {
+  background-color: beige;
+}
+
 .ship {
-  display: flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+img {
+  margin: auto;
+  max-width: 275px;
+  max-height: 275px;
+}
+
+@media (min-width: 720px) {
+  img {
+    max-width: 500px;
+    max-height: 500px;
+  }
 }
