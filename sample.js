@@ -100,9 +100,8 @@ function generateLanding() {
        <h2>Set Sail Sailor!</h2>
     </header>
     <div><img src="https://www.scalehobbyist.com/images/products/ZVE/ZVE00008514/ZVE00008514_0_l.jpg" alt="Greek triremes setting sail on ocean waters"></img>
-    <p></p>
+    <h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
     <form id="submitpage">
-     <h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
      <label for="start">Begin your Adventure!</label>
      <input type="submit" id="start" value="Embark!"></input>
     </form>
@@ -115,115 +114,89 @@ function generateLanding() {
 function generateQuestion() {
   //This will hold HTML for the questions.
   const questionVar = STORE.questions[STORE.questionNumber];
-  return `<header>
-  <h1>${questionVar.questionHead}</h1>
-  <h2>${questionVar.question}</h2>
-  <h3>Your current score is ${STORE.score} out of 5.</h3>
-</header>
-<div><img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
-<form id="getResult">
-<h2>Choose your answer below.</h2>
-<label for="start"></label>
-<input type="radio" name="answer" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}
-<input type="radio" name="answer" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}
-<input type="radio" name="answer" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}
-<input type="radio" name="answer" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}
-<label for="gettingResult">Check your Adventure!</label>
-<input type="submit" id="resultChecker" value="Check!"></input>
-</form>
-</div>`;
+return `
+  <header>
+   <h1>${questionVar.questionHead}</h1>
+   <h2>${questionVar.question}</h2>
+   <h3>Your current score is ${STORE.score} out of 5.</h3>
+  </header>
+   <img src="${questionVar.picture}" alt="The Greek God Hades relaxing with his beloved pet dogbeast cerberus"></img>
+   <form id="getResult">
+     <h2>Choose your answer below.</h2>
+     <label for="start"></label>
+     <input type="radio" name="${questionVar.answers[0]}" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
+     <input type="radio" name="${questionVar.answers[1]}" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
+     <input type="radio" name="${questionVar.answers[2]}" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
+     <input type="radio" name="${questionVar.answers[3]}" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
+     <label for="gettingResult">Check your Adventure!</label>
+     <input type="submit" id="resultChecker" value="Check!"></input>
+   </form>`;
 }
 
 function generateCorrectResults() {
-  return `'<header>
-  <h1>Correct!</h1>
-  <h2>You're a genius!</h2>
-  <h3>Your current score is ${STORE.score} out of 5.</h3>
-</header>
-<main><img src="https://i.pinimg.com/originals/43/2d/97/432d97353a5f6e129c7a4440f47597c0.jpg" alt="Greek comedy mask is happy for you!">
-<p></p>
-<form id="get-results">
-  <label for="start">Keep going!</label>
-  <input type="submit" id="start" value="Next Question">
-</form> 
-</main>'`;
+  return `
+  <header>
+   <h1>Correct!</h1>
+   <h2>You're a genius!</h2>
+   <h3>Your current score is ${STORE.score} out of 5.</h3>
+ </header>
+ <main><img src="https://i.pinimg.com/originals/43/2d/97/432d97353a5f6e129c7a4440f47597c0.jpg" alt="Greek comedy mask is happy for you!">
+   <form id="get-results">
+     <label for="start">Keep going!</label>
+     <input type="submit" id="start" value="Continue!">
+   </form> 
+ </main>`;
 
 }
 
 function generateIncorrectResults() { 
   const questionVar = STORE.questions[STORE.questionNumber];
-  return `<header> <h1>Incorrect...</h1>
-<h2>Oops! The right answer was ${questionVar.correctAnswer}</h2>
-<h3>Your current score is ${STORE.score} out of 5.</h3>
-</header>
-<main><img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek tradgedy set is not happy with you...">
-<p></p>
-<form id="get-results">
-<label for="start">Keep going!</label>
-<input type="submit" id="start" value="Next Question">
-</form> 
-</main>'`;}
+  return `
+   <header> 
+     <h1>Incorrect...</h1>
+     <h2>Oops! The right answer was ${questionVar.correctAnswer}</h2>
+     <h3>Your current score is ${STORE.score} out of 5.</h3>
+  </header>
+  <img src="https://spectator.imgix.net/content/uploads/2018/10/Greek-Tragedy-cover.jpg?auto=compress,enhance,format&crop=faces,entropy,edges&fit=crop&w=820&h=550" alt="Greek tradgedy set is not happy with you...">
+  <form id="get-results">
+    <label for="start">Keep going!</label>
+    <input type="submit" id="start" value="Continue!">
+  </form>`;
+}
 
 
 function generateFinal() {
   //This will hold HTML for the summary
-  return `'<header>
-  <h1>You have completed your Journey</h1>
-  <h2>We hope you are satisfied with yourself</h2>
-  <h3>You got ${STORE.score} out of 5 correct.</h3>
-</header>
-<main><img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters">
-<p></p>
-<form>
-  <label for="start">Restart Your Adventure!</label>
-  <input type="submit" id="start" value="Embark!">
-</form> 
-</main>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
-<script src="app.js"></script>'`;
+  return `
+   <header>
+      <h1>You have completed your Journey</h1>
+      <h2>We hope you are satisfied with yourself</h2>
+      <h3>You got ${STORE.score} out of 5 correct.</h3>
+   </header>
+   <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters">
+   <form>
+     <label for="start">Restart Your Adventure!</label>
+     <input type="submit" id="start" value="Embark!">
+   </form>`;
 }
 
 function startQuiz() {
   //This will be the button press on the renderLanding that will bring you to the first question
   $('#submitpage').submit( event => {
     event.preventDefault();
-    console.log('wow you guys made it this far');
     renderQuestion();
-    
-    
   });
 }
 
 function nextQuestionButton() {
-  //This function will look for the event click on next button on results page
+  //This function will look for the event click on next button on results page, prevents default submit and renders next questions while incrementing questionnumber 
   $('#get-results').submit(event => {
     event.preventDefault();
-    console.log('Jesus this is hard');
-    STORE.questionNumber = STORE.questionNumber + 1;
+    STORE.questionNumber++;
     renderQuestion();
-
   });
   // this function will also incriment quesitonNumber by 1
   // on click we will renderQuestion
-}
-
-function endQuiz() {
-  //This function will render the results of the quiz.
-  
-}
-
-
-function updateScore() {
-  //This function will increment the STORE for correct answers by 1 if the answer chosen is correct, and if not it will not increment. If / else
-}
-
-function updatePage() {
-  //This will increment the current page number on the STORE object.
-}
-
-function submitPage(){
-  // This function will listen for the submit action on the results page and then 
-  //render the next question
 }
 
 function buttonSelect() {
@@ -231,7 +204,6 @@ function buttonSelect() {
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
-    console.log($('input[type="radio"]:checked').val());
     if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer && $('input:radio', this).is(':checked')) {
       STORE.score++;
       renderCorrectResults();
@@ -247,7 +219,8 @@ function buttonSelect() {
 }
 
 function resetButton() {
-  //This puts all store values back to 0
+  STORE.questionNumber = 0;
+  STORE.score = 0;
 }
 
 function handleQuiz() {
@@ -257,6 +230,4 @@ function handleQuiz() {
   buttonSelect();
 }
   
-
-
 $(handleQuiz);
