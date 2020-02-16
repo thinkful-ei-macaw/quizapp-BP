@@ -121,10 +121,10 @@ function generateQuestion() {
    <form id="getResult">
      <h2>Choose your answer below.</h2>
      <label for="start"></label>
-     <input type="radio" class="radio" name="${questionVar.answers[0]}"  value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
-     <input type="radio" class="radio" name="${questionVar.answers[1]}" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
-     <input type="radio" class="radio" name="${questionVar.answers[2]}"  value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
-     <input type="radio" class="radio" name="${questionVar.answers[3]}"  value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
+     <input type="radio" class="radio" aria-label="${questionVar.answers[0]}" name="radio1" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
+     <input type="radio" class="radio" aria-label="${questionVar.answers[1]}" name="radio1" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
+     <input type="radio" class="radio" aria-label="${questionVar.answers[2]}" name="radio1" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
+     <input type="radio" class="radio" aria-label="${questionVar.answers[3]}" name="radio1" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
      <label for="gettingResult">Check your Adventure!</label>
      <input type="submit" id="resultChecker" value="Check!"></input>
    </form>`;
@@ -171,8 +171,8 @@ function generateFinal() {
    </header>
    <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters">
    <form>
-     <label for="start">Restart Your Adventure!</label>
-     <input type="submit" id="start" value="Embark!">
+     <label for="restart">Restart Your Adventure!</label>
+     <input type="submit" id="restart" value="Rembark!">
    </form>`;
 }
 
@@ -205,10 +205,7 @@ function radioSelect() {
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
-    if ($('input:radio').siblings(':checked').length > 1) {
-      alert('Please make only one selection!');
-    }
-    else if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
+    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       STORE.score++;
       renderCorrectResults();
       nextQuestionButton();
@@ -217,6 +214,9 @@ function radioSelect() {
       renderIncorrectResults();
       nextQuestionButton();
     } 
+    else {
+      alert("Please make a selection or we will fuck you up")
+    }
   });
 }
 
@@ -229,8 +229,15 @@ function allowDeselect() {
 }
 
 function resetButton() {
-  STORE.questionNumber = 0;
-  STORE.score = 0;
+  $('#restart').submit(event => {
+    event.preventDefault();
+    STORE.questionNumber = 0;
+    STORE.score = 0;
+    console.log('restarted');
+    renderLanding();
+  });
+  
+
 }
 
 function handleQuiz() {
