@@ -95,12 +95,12 @@ function renderFinal() {
   $('.ship').html(generateFinal());
 }
 function generateLanding() {
-  return `<header>
+  return `<header aria-label="Greek Mythology Quiz, Set Sail Sailor">
        <h1>Greek Mythology Quiz</h1>
        <h2>Set Sail Sailor!</h2>
     </header>
     <div><img src="https://www.scalehobbyist.com/images/products/ZVE/ZVE00008514/ZVE00008514_0_l.jpg" alt="Greek triremes setting sail on ocean waters"></img>
-    <h2>Do you dare challenge your intelligence on Ancient Greece?</h2>
+    <h2 aria-label="Do you accept this challenge?">Do you dare challenge your intelligence on Ancient Greece?</h2>
     <form id="submitpage">
      <label for="start">Begin your Adventure!</label>
      <input type="submit" id="start" value="Embark!"></input>
