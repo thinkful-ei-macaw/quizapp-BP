@@ -94,6 +94,7 @@ function renderIncorrectResults() {
 function renderFinal() {
   $('.ship').html(generateFinal());
 }
+
 function generateLanding() {
   return `<header aria-label="Greek Mythology Quiz, Set Sail Sailor">
        <h1>Greek Mythology Quiz</h1>
@@ -114,7 +115,7 @@ function generateLanding() {
 function generateQuestion() {
   //This will hold HTML for the questions.
   const questionVar = STORE.questions[STORE.questionNumber];
-return `
+  return `
   <header>
    <h1>${questionVar.questionHead}</h1>
    <h2>${questionVar.question}</h2>
@@ -164,7 +165,6 @@ function generateIncorrectResults() {
   </form>`;
 }
 
-
 function generateFinal() {
   //This will hold HTML for the summary
   return `
@@ -204,7 +204,7 @@ function buttonSelect() {
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
-    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer && $('input:radio', this).is(':checked')) {
+    if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
       STORE.score++;
       renderCorrectResults();
       nextQuestionButton();
@@ -213,7 +213,7 @@ function buttonSelect() {
       renderIncorrectResults();
       nextQuestionButton();
     } else {
-      alert('Please make a selection!')
+      alert('Please make one selection!')
     }
   });
 }
