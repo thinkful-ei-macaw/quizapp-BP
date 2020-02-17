@@ -6,6 +6,7 @@ const STORE = {
       questionHead: 'Question 1/5',
       question: 'Which realm of the Earth did the God Hades reign over?',
       picture: 'https://images.squarespace-cdn.com/content/v1/58a2939a15d5dbaa30d8c8f8/1493535879754-KI6B0V9M2FIKI8TF20EC/ke17ZwdGBToddI8pDm48kFTEgwhRQcX9r3XtU0e50sUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcW7uEhC96WQdj-SwE5EpM0lAopPba9ZX3O0oeNTVSRxdHAmtcci_6bmVLoSDQq_pb/image-asset.jpeg',
+      alt: 'Hades seated in his throne with his three headed pet cerberus',
       answers: [
         'The skies',
         'The seas',
@@ -18,6 +19,7 @@ const STORE = {
       questionHead: 'Question 2/5',
       question: 'Which goddess was the goddess of love in Greek mythology?',
       picture: 'https://i0.wp.com/strangeago.com/wp-content/uploads/2018/09/Venus01.jpg?resize=680%2C385&ssl=1" alt="Goddess Aphrodite being admired by her winged baby angels',
+      alt: 'The goddess of love being showered by her angel babies',
       answers: [
         'Aphrodite',
         'Freyja',
@@ -30,6 +32,7 @@ const STORE = {
       questionHead: 'Question 3/5',
       question: 'Which Greek wrote the classic epic, The Illiad?',
       picture: 'https://cdn.britannica.com/72/133972-050-9F4E1129/Procession-of-the-Trojan-Horse-canvas-Troy-1760.jpg',
+      alt: 'Depiction of the battle of troy, including a trojan horse',
       answers: [
         'Plato',
         'Stephen King',
@@ -42,6 +45,7 @@ const STORE = {
       questionHead: 'Question 4/5',
       question: 'Which mythological hero put Cerberus to sleep?',
       picture: 'https://www.sothebys.com/content/dam/stb/lots/N09/N09869/025N09869_9PYHK.jpg.thumb.500.500.png',
+      alt: 'Our Hero using his lyre to put to sleep cerberus',
       answers: [
         'Hercules',
         'Orpheus',
@@ -54,6 +58,7 @@ const STORE = {
       questionHead: 'Question 5/5',
       question: 'What substance is known as the "Nectar of the Gods?"',
       picture: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Golden_Apple_of_Discord_by_Jacob_Jordaens.jpg',
+      alt: 'Painting of the Gods sharing food and drink',
       answers: [
         'Ichor',
         'Wine',
@@ -108,7 +113,7 @@ function generateLanding() {
     <h3 aria-label="Do you accept this challenge?">Do you dare to challenge your intelligence on Ancient Greece?</h3>
     <h4>If so...</h4>
     <form id="submitpage">
-     <label for="start">Begin your Adventure!</label><br><br>
+     <label for="start" aria-label="Begin your Adventure">Begin your Adventure!</label><br><br>
      <input type="submit" id="start" value="Embark!"></input>
     </form>`;
 
@@ -161,7 +166,7 @@ function generateIncorrectResults() {
    <header> 
      <h1>Incorrect...</h1>
      <h2>Oops! The correct answer was:</h2>
-     <h5>"${questionVar.correctAnswer}"</h5>
+     <h3 class="incorrect">"${questionVar.correctAnswer}"</h3>
      <h4>Your current score is ${STORE.score} out of 5.</h4>
   </header>
   <img src="https://imagizer.imageshack.com/img922/7299/GXmzX5.png" alt="Greek tradgedy set is not happy with you..."><br>
