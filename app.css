@@ -11,14 +11,21 @@
   background-color: beige;
 }
 
-h1, h2, h3 {
-  padding-top: 20px;
-  padding-bottom: 20px;
+h1, h2, h3, h4 {
   font-family: 'Cinzel', serif;
 }
 
+h4 {
+  font-size: 22px;
+}
+
 h1 {
-  background-color: olive;
+  background-color: rgb(165, 165, 64);
+  width: 800px;
+  border-radius: 4px;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .ship {
@@ -40,16 +47,50 @@ form {
   font-weight: bold;
 }
 
-input {
-  background-color: olive;
-  border: 1px solid black ;
-  font-weight: bold;
+input[type=submit] {
+  border-radius: 4px;
+  background-color: rgb(165, 165, 64);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+@media (min-width: 320px) {
+  h1 {
+    font-size: 25px;
+    width: 300px;
+  }
+
+  img {
+    max-width: 275;
+    max-height: 275;
+  }
+}
+
+h5 {
+  font-size: 32px;
+  font-family: 'Cinzel', serif;
 }
 
 @media (min-width: 720px) {
   img {
     max-width: 500px;
     max-height: 500px;
+  }
+
+  h1 {
+    width: 500px;
+  }
+
+  h5 {
+    font-size: 48px;
+    font-family: 'Cinzel', serif;
   }
 }
 
