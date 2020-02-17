@@ -68,7 +68,15 @@ const STORE = {
   score: 0
 };
 
-
+function render() {
+  if (STORE.quizStarted=== false) {
+    renderLanding();
+  } else if(STORE.questionNumber < 5) {
+    renderQuestion();
+  } else {
+    renderFinal();
+  }
+}
 function renderLanding() {
   //This will prep the quiz structure for insertion of information from store / other functions
   $('.ship').html(generateLanding());
@@ -89,7 +97,6 @@ function renderIncorrectResults() {
 
 function renderFinal() {
   $('.ship').html(generateFinal());
-  resetButton();
 }
 
 function generateLanding() {
@@ -173,7 +180,7 @@ function generateFinal() {
    </header>
    <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters"><br>
    <h3>Are you satisfied with yourself? If not...</h3>
-   <form>
+   <form id="restart1">
      <label for="restart">Restart Your Adventure!</label><br><br>
      <input type="submit" id="restart" value="Re-Embark!">
    </form>`;
@@ -183,7 +190,8 @@ function startQuiz() {
   //This will be the button press on the renderLanding that will bring you to the first question
   $('#submitpage').submit( event => {
     event.preventDefault();
-    renderQuestion();
+    STORE.quizStarted = true;
+    render();
   });
 }
 
@@ -193,9 +201,10 @@ function nextQuestionButton() {
     event.preventDefault();
     STORE.questionNumber++;
     if (STORE.questionNumber < 5) {
-      renderQuestion(); 
+      render(); 
+      radioSelect();
     } else {
-      renderFinal();
+      render();
       resetButton();
     }
   });
@@ -205,7 +214,6 @@ function nextQuestionButton() {
 
 function radioSelect() {
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
-  allowDeselect();
   $('#getResult').submit(event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
@@ -218,27 +226,20 @@ function radioSelect() {
       renderIncorrectResults();
       nextQuestionButton();
     } 
-    else {
-      alert('Please make a selection.')
-    }
   });
 }
 
-function allowDeselect() {
-  $('input').on('click', function(e) {
-    if (e.ctrlKey) {
-      $(this).prop('checked', false);
-    }
-  });
-}
+
 
 function resetButton() {
-  $('#restart').on('submit', event => {
+  $('form').submit( event => {
     event.preventDefault();
     STORE.questionNumber = 0;
     STORE.score = 0;
+    STORE.quizStarted = false;
     console.log('restarted');
-    renderLanding();
+    render();
+    startQuiz();
   });
   
 
@@ -246,7 +247,7 @@ function resetButton() {
 
 function handleQuiz() {
   //This function calls all functions in order to run the entire quiz
-  renderLanding();
+  render();
   startQuiz();
   radioSelect();
 }
