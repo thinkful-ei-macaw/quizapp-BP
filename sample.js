@@ -89,6 +89,7 @@ function renderIncorrectResults() {
 
 function renderFinal() {
   $('.ship').html(generateFinal());
+  resetButton();
 }
 
 function generateLanding() {
@@ -117,13 +118,17 @@ function generateQuestion() {
    <h2>Your current score is ${STORE.score} out of 5.</h2>
   </header>
    <img src="${questionVar.picture}" alt="${questionVar.alt}"></img>
-   <h3></h3>
+   <h3>${questionVar.question}</h3>
    <form id="getResult">
-     <label for="start">${questionVar.question}</label><br><br>
-     <input type="radio" class="radio" aria-label="${questionVar.answers[0]}" name="radio1" value="${questionVar.answers[0]}" /> ${questionVar.answers[0]}<br></br>
-     <input type="radio" class="radio" aria-label="${questionVar.answers[1]}" name="radio1" value="${questionVar.answers[1]}" /> ${questionVar.answers[1]}<br></br>
-     <input type="radio" class="radio" aria-label="${questionVar.answers[2]}" name="radio1" value="${questionVar.answers[2]}" /> ${questionVar.answers[2]}<br></br>
-     <input type="radio" class="radio" aria-label="${questionVar.answers[3]}" name="radio1" value="${questionVar.answers[3]}" /> ${questionVar.answers[3]}<br></br>
+     <label for="start"></label>
+     <input type="radio" class="radio" id="radio1" aria-label="${questionVar.answers[0]}" name="radio1" value="${questionVar.answers[0]}" /> 
+     <label for="radio1">${questionVar.answers[0]}</label><br></br>
+     <input type="radio" class="radio" id="radio2" aria-label="${questionVar.answers[1]}" name="radio1" value="${questionVar.answers[1]}"/>
+     <label for="radio2">${questionVar.answers[1]}</label><br></br>
+     <input type="radio" class="radio" id="radio3" aria-label="${questionVar.answers[2]}" name="radio1" value="${questionVar.answers[2]}"/> 
+     <label for="radio3">${questionVar.answers[2]}</label><br></br>
+     <input type="radio" class="radio" id="radio4" aria-label="${questionVar.answers[3]}" name="radio1" value="${questionVar.answers[3]}"/> 
+     <label for="radio4">${questionVar.answers[3]}</label><br></br>
      <input type="submit" id="resultChecker" value="Check!"></input>
    </form>`;
 }
@@ -191,6 +196,7 @@ function nextQuestionButton() {
       renderQuestion(); 
     } else {
       renderFinal();
+      resetButton();
     }
   });
   // this function will also incriment quesitonNumber by 1
@@ -227,7 +233,7 @@ function allowDeselect() {
 }
 
 function resetButton() {
-  $('#restart').submit(event => {
+  $('#restart').on('submit', event => {
     event.preventDefault();
     STORE.questionNumber = 0;
     STORE.score = 0;
