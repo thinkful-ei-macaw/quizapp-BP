@@ -162,7 +162,7 @@ function generateCorrectResults() {
     </header>
     <img class= "resultpage" src="https://www.pngkey.com/png/full/300-3004290_comedy-mask-copy-greek-theater-mask-templates.png" alt="Greek comedy mask is happy for you!"><br>
     <form id="get-results">
-      <h4>Keep going!</h4>
+      <h4 class='direction'>Keep going!</h4>
       <label for="start"></label>
       <input type="submit" id="start" value="Continue!">
     </form> `;
@@ -181,7 +181,7 @@ function generateIncorrectResults() {
   </header>
   <img class= "resultspage" src="https://imagizer.imageshack.com/img922/7299/GXmzX5.png" alt="Greek tradgedy set is not happy with you..."><br>
   <form id="get-results">
-    <h4>Keep going!</h4>
+    <h4 class='direction'>Keep going!</h4>
     <label for="start"></label>
     <input type="submit" id="start" value="Continue!">
   </form>`;
@@ -196,7 +196,7 @@ function generateFinal() {
    </header>
    <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters"><br>
    <h3>Are you satisfied with yourself? If not...</h3>
-   <h4>Restart Your Adventure!<h4>
+   <h4 class='direction'>Restart Your Adventure!<h4>
    <form id="restart1">
      <label for="restart"></label>
      <input type="submit" id="restart" value="Re-Embark!">
@@ -225,8 +225,6 @@ function nextQuestionButton() {
       resetButton();
     }
   });
-  // this function will also incriment quesitonNumber by 1
-  // on click we will renderQuestion
 }
 
 function radioSelect() {

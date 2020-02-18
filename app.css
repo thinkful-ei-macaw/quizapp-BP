@@ -68,6 +68,10 @@ input[type=submit] {
   margin: 5px;
 }
 
+.direction {
+  font-size: 32px;
+}
+
 @media (min-width: 320px) {
   h1 {
     font-size: 25px;
