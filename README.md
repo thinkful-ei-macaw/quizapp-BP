@@ -1,2 +1,2 @@
 # quizapp-BP
-Brannen and Patrick's Quiz App
+Brannen Petit and Patrick Nguyen's Quiz App
