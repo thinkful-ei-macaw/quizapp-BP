@@ -118,8 +118,9 @@ function generateLanding() {
     <img src="https://www.scalehobbyist.com/images/products/ZVE/ZVE00008514/ZVE00008514_0_l.jpg" alt="Greek triremes setting sail on ocean waters"></img>
     <h3 aria-label="Do you accept this challenge?">Do you dare to challenge your intelligence on Ancient Greece?</h3>
     <h4>If so...</h4>
+    <h4>Begin your Adventure!</h4>
     <form id="submitpage">
-     <label for="start" aria-label="Begin your Adventure">Begin your Adventure!</label><br><br>
+     <label for="start" aria-label="Begin your Adventure"></label>
      <input type="submit" id="start" value="Embark!"></input>
     </form>`;
 
@@ -161,7 +162,8 @@ function generateCorrectResults() {
     </header>
     <img class= "resultpage" src="https://www.pngkey.com/png/full/300-3004290_comedy-mask-copy-greek-theater-mask-templates.png" alt="Greek comedy mask is happy for you!"><br>
     <form id="get-results">
-      <label for="start">Keep going!</label><br><br>
+      <h4>Keep going!</h4>
+      <label for="start"></label>
       <input type="submit" id="start" value="Continue!">
     </form> `;
 
@@ -179,7 +181,8 @@ function generateIncorrectResults() {
   </header>
   <img class= "resultspage" src="https://imagizer.imageshack.com/img922/7299/GXmzX5.png" alt="Greek tradgedy set is not happy with you..."><br>
   <form id="get-results">
-    <label for="start">Keep going!</label><br><br>
+    <h4>Keep going!</h4>
+    <label for="start"></label>
     <input type="submit" id="start" value="Continue!">
   </form>`;
 }
@@ -193,15 +196,16 @@ function generateFinal() {
    </header>
    <img src="https://i.pinimg.com/originals/9e/be/e1/9ebee12a561dd53e785ff73df902faca.jpg" alt="Greek triremes setting sail on ocean waters"><br>
    <h3>Are you satisfied with yourself? If not...</h3>
+   <h4>Restart Your Adventure!<h4>
    <form id="restart1">
-     <label for="restart">Restart Your Adventure!</label><br><br>
+     <label for="restart"></label>
      <input type="submit" id="restart" value="Re-Embark!">
    </form>`;
 }
 
 function startQuiz() {
   //This will be the button press on the renderLanding that will bring you to the first question
-  $('#submitpage').submit( event => {
+  $('#submitpage').on('submit', event => {
     event.preventDefault();
     STORE.quizStarted = true;
     render();
@@ -210,7 +214,7 @@ function startQuiz() {
 
 function nextQuestionButton() {
   //This function will look for the event click on next button on results page, prevents default submit and renders next questions while incrementing questionnumber 
-  $('#get-results').submit(event => {
+  $('#get-results').on('submit', event => {
     event.preventDefault();
     STORE.questionNumber++;
     if (STORE.questionNumber < 5) {
@@ -227,7 +231,7 @@ function nextQuestionButton() {
 
 function radioSelect() {
   //Once quiz options are chosen, this function will contain the information on what choice was selected in the question.
-  $('#getResult').submit(event => {
+  $('#getResult').submit( event => {
     event.preventDefault();
     const questionVar = STORE.questions[STORE.questionNumber];
     if ($('input[type="radio"]:checked').val() === questionVar.correctAnswer) {
@@ -246,7 +250,7 @@ function radioSelect() {
 
 function resetButton() {
   //This function has an event handler that will reset the quiz for a restart
-  $('form').submit( event => {
+  $('form').on('submit', event => {
     event.preventDefault();
     STORE.questionNumber = 0;
     STORE.score = 0;
