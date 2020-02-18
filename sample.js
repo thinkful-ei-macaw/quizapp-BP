@@ -74,6 +74,7 @@ const STORE = {
 };
 
 function render() {
+  // will render pages based upon quiz starting and quesiton number
   if (STORE.quizStarted=== false) {
     renderLanding();
   } else if(STORE.questionNumber < 5) {
@@ -88,23 +89,28 @@ function renderLanding() {
 }
 
 function renderQuestion() {
+  // will render quesiton page and call the radio select event handler
   $('.ship').html(generateQuestion());
   radioSelect();
 }
 
 function renderCorrectResults() {
+  // will render inccorect results page
   $('.ship').html(generateCorrectResults());
 }
 
 function renderIncorrectResults() {
+  // will render incorrect results page
   $('.ship').html(generateIncorrectResults());
 }
 
 function renderFinal() {
+  // will render summary/final page
   $('.ship').html(generateFinal());
 }
 
 function generateLanding() {
+  // this will generate html for landing page
   return `<header aria-label="Greek Mythology Quiz, Set Sail Sailor">
        <h1>Greek Mythology Quiz</h1>
        <h2>Set Sail Sailor!</h2>
@@ -122,7 +128,7 @@ function generateLanding() {
 }
 
 function generateQuestion() {
-  //This will hold HTML for the questions.
+  //This will generate HTML for the questions.
   const questionVar = STORE.questions[STORE.questionNumber];
   return `
   <header>
@@ -146,13 +152,14 @@ function generateQuestion() {
 }
 
 function generateCorrectResults() {
+  // This will generate correct results html
   return `
     <header>
      <h1>Correct!</h1>
      <h2>You're a genius!</h2>
      <h3>Your current score is ${STORE.score} out of 5.</h3>
     </header>
-    <img src="https://www.pngkey.com/png/full/300-3004290_comedy-mask-copy-greek-theater-mask-templates.png" alt="Greek comedy mask is happy for you!"><br>
+    <img class= "resultpage" src="https://www.pngkey.com/png/full/300-3004290_comedy-mask-copy-greek-theater-mask-templates.png" alt="Greek comedy mask is happy for you!"><br>
     <form id="get-results">
       <label for="start">Keep going!</label><br><br>
       <input type="submit" id="start" value="Continue!">
@@ -161,6 +168,7 @@ function generateCorrectResults() {
 }
 
 function generateIncorrectResults() { 
+  // This will generate inccorrect results html
   const questionVar = STORE.questions[STORE.questionNumber];
   return `
    <header> 
@@ -169,7 +177,7 @@ function generateIncorrectResults() {
      <h3 class="incorrect">"${questionVar.correctAnswer}"</h3>
      <h4>Your current score is ${STORE.score} out of 5.</h4>
   </header>
-  <img src="https://imagizer.imageshack.com/img922/7299/GXmzX5.png" alt="Greek tradgedy set is not happy with you..."><br>
+  <img class= "resultspage" src="https://imagizer.imageshack.com/img922/7299/GXmzX5.png" alt="Greek tradgedy set is not happy with you..."><br>
   <form id="get-results">
     <label for="start">Keep going!</label><br><br>
     <input type="submit" id="start" value="Continue!">
@@ -237,6 +245,7 @@ function radioSelect() {
 
 
 function resetButton() {
+  //This function has an event handler that will reset the quiz for a restart
   $('form').submit( event => {
     event.preventDefault();
     STORE.questionNumber = 0;

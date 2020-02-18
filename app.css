@@ -9,6 +9,8 @@
 
 * {
   background-color: beige;
+  box-sizing: border-box;
+
 }
 
 h1, h2, h3, h4 {
@@ -89,6 +91,11 @@ h5 {
     max-height: 500px;
   }
 
+  .resultspage {
+    max-width: 300px;
+    max-height: 300px;
+  }
+
   h1 {
     width: 500px;
   }
@@ -99,3 +106,18 @@ h5 {
   }
 }
 
+@media (min-width: 1024px) {
+   img {  
+    max-width: 600px;
+    max-height: 600px;
+  }
+
+  .resultspage {
+    max-height: 450px;
+    max-width: 450px;
+  }
+  
+  h1 {
+    width: 80%;
+  }
+  }
