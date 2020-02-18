@@ -1,2 +1,2 @@
 # quizapp-BP
-Brennan and Pat's Quiz App
+Brannen and Patrick's Quiz App
